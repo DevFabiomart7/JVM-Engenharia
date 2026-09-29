@@ -18,6 +18,9 @@ navigation.querySelectorAll('a').forEach((link) => {
 
 document.querySelector('#year').textContent = new Date().getFullYear();
 
+const contactApiBaseUrl = (window.JVM_CONTACT_API_URL || '').replace(/\/$/, '');
+const isGitHubPages = window.location.hostname.endsWith('github.io');
+
 document.querySelector('#contact-form').addEventListener('submit', (event) => {
   event.preventDefault();
   const form = event.currentTarget;
@@ -28,11 +31,17 @@ document.querySelector('#contact-form').addEventListener('submit', (event) => {
   const formData = new FormData(form);
   const payload = Object.fromEntries(formData.entries());
 
+  if (isGitHubPages && !contactApiBaseUrl) {
+    note.dataset.state = 'error';
+    note.textContent = 'O formulário ainda precisa ser conectado ao backend. Por enquanto, fale com a JVM pelo WhatsApp ou e-mail.';
+    return;
+  }
+
   submitButton.disabled = true;
   note.removeAttribute('data-state');
   note.textContent = 'Enviando sua mensagem…';
 
-  fetch('/api/contact', {
+  fetch(`${contactApiBaseUrl || window.location.origin}/api/contact`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),

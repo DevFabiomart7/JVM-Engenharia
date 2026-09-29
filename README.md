@@ -29,6 +29,12 @@ O endpoint `GET /api/health` informa se o processo está ativo e se as variávei
 
 O `Dockerfile` prepara o site e a API para hospedagem em um serviço que aceite contêineres. Configure as variáveis `MAIL_TO`, `MAIL_FROM`, `RESEND_API_KEY`, `ALLOWED_ORIGINS` e `PORT` na plataforma. `ALLOWED_ORIGINS` deve conter a origem pública exata do site, como `https://www.seudominio.com.br`.
 
+### GitHub Pages
+
+O workflow `.github/workflows/pages.yml` publica automaticamente o site estático ao enviar alterações para `main`. O endereço previsto para este repositório é `https://devfabiomart7.github.io/JVM-Engenharia/`. Em **Settings → Pages**, selecione **GitHub Actions** como origem de publicação. O Pages publica apenas HTML, CSS, JavaScript e imagens; ele não executa o backend Node.
+
+Por isso, o formulário avisa que ainda precisa de um backend quando aberto no domínio `github.io`. Quando a API Node estiver hospedada separadamente, preencha `window.JVM_CONTACT_API_URL` em `js/config.js` com sua origem HTTPS, sem `/api/contact`, e inclua `https://devfabiomart7.github.io` em `ALLOWED_ORIGINS` no backend.
+
 Use HTTPS na hospedagem. Deixe `TRUST_PROXY=false`, a menos que a plataforma use um proxy reverso confiável e sobrescreva os cabeçalhos `X-Forwarded-For` e `X-Forwarded-Proto`; só então habilite-o para que o limite de requisições identifique o IP real do visitante.
 
 O limite de cinco envios por dez minutos é mantido em memória e reinicia quando o processo reinicia. Para hospedagem com várias instâncias, substitua esse armazenamento por um limitador compartilhado (por exemplo, Redis) antes de escalar horizontalmente.
