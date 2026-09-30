@@ -31,7 +31,7 @@ O `Dockerfile` prepara o site e a API para hospedagem em um serviço que aceite 
 
 ### GitHub Pages
 
-O workflow `.github/workflows/pages.yml` publica automaticamente as duas versões quando há alterações em `main` ou em `refactor/MelhoriaDeAbas`. O repositório já está configurado para usar **GitHub Actions** como origem de publicação. A versão da `main` fica em `https://devfabiomart7.github.io/JVM-Engenharia/`; a versão desta branch fica em `https://devfabiomart7.github.io/JVM-Engenharia/preview/`. O Pages publica HTML, CSS, JavaScript e imagens; ele não executa o backend Node.
+O workflow `.github/workflows/pages.yml` publica automaticamente a versão atual quando há alterações em `main`. O repositório usa **GitHub Actions** como origem de publicação. A versão atual fica em `https://devfabiomart7.github.io/JVM-Engenharia/`; a versão anterior, preservada para comparação, fica em `https://devfabiomart7.github.io/JVM-Engenharia/preview/`. O Pages publica HTML, CSS, JavaScript e imagens; ele não executa o backend Node.
 
 Por isso, o formulário avisa que ainda precisa de um backend quando aberto no domínio `github.io`. Quando a API Node estiver hospedada separadamente, preencha `window.JVM_CONTACT_API_URL` em `js/config.js` com sua origem HTTPS, sem `/api/contact`, e inclua `https://devfabiomart7.github.io` em `ALLOWED_ORIGINS` no backend.
 

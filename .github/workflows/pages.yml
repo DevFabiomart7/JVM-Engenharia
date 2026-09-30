@@ -4,10 +4,6 @@ on:
   push:
     branches:
       - main
-      - refactor/MelhoriaDeAbas
-  repository_dispatch:
-    types:
-      - preview-updated
   workflow_dispatch:
 
 concurrency:
@@ -28,11 +24,11 @@ jobs:
           ref: main
           path: sources/main
 
-      - name: Checkout preview version
+      - name: Checkout version before the redesign
         uses: actions/checkout@v6
         with:
-          ref: refactor/MelhoriaDeAbas
-          path: sources/preview
+          ref: ab20588
+          path: sources/previous
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
@@ -40,10 +36,10 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p _site/preview
-          cp sources/main/index.html _site/
+          cp sources/main/index.html sources/main/sobre.html sources/main/servicos.html sources/main/cursos.html sources/main/contato.html _site/
           cp -R sources/main/css sources/main/js sources/main/assets _site/
-          cp sources/preview/index.html sources/preview/sobre.html sources/preview/servicos.html sources/preview/cursos.html sources/preview/contato.html _site/preview/
-          cp -R sources/preview/css sources/preview/js sources/preview/assets _site/preview/
+          cp sources/previous/index.html _site/preview/
+          cp -R sources/previous/css sources/previous/js sources/previous/assets _site/preview/
           touch _site/.nojekyll
           touch _site/preview/.nojekyll
 
@@ -66,19 +62,3 @@ jobs:
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-  notify-main:
-    if: github.ref == 'refs/heads/refactor/MelhoriaDeAbas'
-    permissions:
-      contents: write
-    runs-on: ubuntu-latest
-    steps:
-      - name: Request Pages deployment from the default branch
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.repos.createDispatchEvent({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              event_type: 'preview-updated',
-            });
