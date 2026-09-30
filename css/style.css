@@ -261,6 +261,9 @@ html::after {
   margin-inline:auto;
   color:var(--muted)
 }
+.home-training-inner>.button {
+  margin-inline:auto
+}
 .button {
   display:inline-flex;
   align-items:center;
