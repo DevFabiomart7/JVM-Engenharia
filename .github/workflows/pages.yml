@@ -27,7 +27,7 @@ jobs:
       - name: Checkout version before the redesign
         uses: actions/checkout@v6
         with:
-          ref: ab20588
+          ref: ab2058868b954410a3ccb1f2d3473197b62ef0f3
           path: sources/previous
 
       - name: Configure GitHub Pages
