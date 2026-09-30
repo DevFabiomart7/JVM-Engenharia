@@ -147,6 +147,13 @@ button,input,select,textarea {
 .nav>a[aria-current="page"]:not(.button) {
   color:#ae7a29
 }
+.link-icon {
+  display:inline-block;
+  width:14px;
+  height:14px;
+  flex:0 0 auto;
+  vertical-align:middle
+}
 .page-entering #conteudo,
 .page-entering .footer {
   animation:page-enter .42s cubic-bezier(.2,.7,.25,1) both
@@ -683,6 +690,11 @@ em {
 .training-copy .text-link {
   justify-content:center
 }
+.training-copy>.button {
+  display:flex;
+  width:fit-content;
+  margin:24px auto 0
+}
 .course-tags {
   display:flex;
   flex-wrap:wrap;
@@ -1177,8 +1189,7 @@ em {
     gap:19px
   }
   .hero-note {
-    right:18px;
-    bottom:51px
+    display:none
   }
   .hero-index {
     width:calc(100% - 36px);
