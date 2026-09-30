@@ -1,6 +1,6 @@
 # JVM Engenharia & Treinamento
 
-Site institucional estático com backend Node.js opcional para a API de contato. Em execução local ou em contêiner, o Node.js serve o site e a API. O GitHub Pages publica apenas o site estático.
+Site institucional estático com páginas independentes para início, sobre nós, serviços, cursos e contato, além de backend Node.js opcional para a API de contato. Em execução local ou em contêiner, o Node.js serve o site e a API. O GitHub Pages publica apenas o site estático.
 
 ## Requisitos
 
@@ -31,7 +31,7 @@ O `Dockerfile` prepara o site e a API para hospedagem em um serviço que aceite 
 
 ### GitHub Pages
 
-O workflow `.github/workflows/pages.yml` publica automaticamente o site estático quando há alterações em `main`. O repositório já está configurado para usar **GitHub Actions** como origem de publicação. O site fica em `https://devfabiomart7.github.io/JVM-Engenharia/`. O Pages publica HTML, CSS, JavaScript e imagens; ele não executa o backend Node.
+O workflow `.github/workflows/pages.yml` publica automaticamente as duas versões quando há alterações em `main` ou em `refactor/MelhoriaDeAbas`. O repositório já está configurado para usar **GitHub Actions** como origem de publicação. A versão da `main` fica em `https://devfabiomart7.github.io/JVM-Engenharia/`; a versão desta branch fica em `https://devfabiomart7.github.io/JVM-Engenharia/preview/`. O Pages publica HTML, CSS, JavaScript e imagens; ele não executa o backend Node.
 
 Por isso, o formulário avisa que ainda precisa de um backend quando aberto no domínio `github.io`. Quando a API Node estiver hospedada separadamente, preencha `window.JVM_CONTACT_API_URL` em `js/config.js` com sua origem HTTPS, sem `/api/contact`, e inclua `https://devfabiomart7.github.io` em `ALLOWED_ORIGINS` no backend.
 

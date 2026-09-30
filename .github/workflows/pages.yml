@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - refactor/MelhoriaDeAbas
   workflow_dispatch:
 
 concurrency:
@@ -17,18 +18,30 @@ jobs:
       pages: read
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout published version
         uses: actions/checkout@v6
+        with:
+          ref: main
+          path: sources/main
+
+      - name: Checkout preview version
+        uses: actions/checkout@v6
+        with:
+          ref: refactor/MelhoriaDeAbas
+          path: sources/preview
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
       - name: Prepare static site
         run: |
-          mkdir -p _site
-          cp index.html _site/
-          cp -R css js assets _site/
+          mkdir -p _site/preview
+          cp sources/main/index.html _site/
+          cp -R sources/main/css sources/main/js sources/main/assets _site/
+          cp sources/preview/index.html sources/preview/sobre.html sources/preview/servicos.html sources/preview/cursos.html sources/preview/contato.html _site/preview/
+          cp -R sources/preview/css sources/preview/js sources/preview/assets _site/preview/
           touch _site/.nojekyll
+          touch _site/preview/.nojekyll
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4

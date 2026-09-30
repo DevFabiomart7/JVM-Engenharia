@@ -292,7 +292,8 @@ function serveStatic(request, response, pathname) {
     return sendJson(response, 400, { message: 'Caminho inválido.' });
   }
 
-  const allowedPath = decodedPath === '/' || decodedPath === '/index.html' || /^\/(css|js|assets)\/[a-zA-Z0-9._/-]+$/.test(decodedPath);
+  const allowedPages = new Set(['/index.html', '/sobre.html', '/servicos.html', '/cursos.html', '/contato.html']);
+  const allowedPath = decodedPath === '/' || allowedPages.has(decodedPath) || /^\/(css|js|assets)\/[a-zA-Z0-9._/-]+$/.test(decodedPath);
   if (!allowedPath || decodedPath.split('/').includes('..')) {
     return sendJson(response, 404, { message: 'Página não encontrada.' });
   }
@@ -309,7 +310,7 @@ function serveStatic(request, response, pathname) {
 
   response.statusCode = 200;
   response.setHeader('Content-Type', contentTypes[extname(filePath).toLowerCase()] || 'application/octet-stream');
-  response.setHeader('Cache-Control', relativePath === 'index.html' ? 'no-cache' : 'public, max-age=3600');
+  response.setHeader('Cache-Control', allowedPages.has(`/${relativePath}`) ? 'no-cache' : 'public, max-age=3600');
   if (request.method === 'HEAD') return response.end();
   return createReadStream(filePath).pipe(response);
 }
