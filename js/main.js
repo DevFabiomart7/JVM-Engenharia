@@ -1,5 +1,27 @@
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#site-nav');
+const themeButton = document.querySelector('#theme-toggle');
+
+function updateThemeButton(theme) {
+  const nextTheme = theme === 'dark' ? 'light' : 'dark';
+  const label = nextTheme === 'dark' ? 'Modo escuro' : 'Modo claro';
+  themeButton.setAttribute('aria-label', `Ativar ${label.toLowerCase()}`);
+  themeButton.querySelector('.theme-toggle-label').textContent = label;
+  themeButton.querySelector('.theme-toggle-icon').textContent = nextTheme === 'dark' ? '☾' : '☀';
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#10232f' : '#ffffff');
+}
+
+const activeTheme = document.documentElement.dataset.theme || 'light';
+updateThemeButton(activeTheme);
+
+themeButton.addEventListener('click', () => {
+  const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = nextTheme;
+  updateThemeButton(nextTheme);
+  try {
+    localStorage.setItem('jvm-theme', nextTheme);
+  } catch {}
+});
 
 menuButton.addEventListener('click', () => {
   const isOpen = menuButton.getAttribute('aria-expanded') === 'true';

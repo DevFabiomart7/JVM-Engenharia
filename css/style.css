@@ -7,6 +7,11 @@
   --pale:#f3f5f4;
   --white:#fff;
   --line:#dce3e3;
+  --surface:#fff;
+  --surface-soft:#f3f5f4;
+  --field:#fff;
+  --field-border:#d9e0e1;
+  --card-hover:#f7f8f7;
   --font:'DM Sans',sans-serif;
   --display:'Manrope',sans-serif
 }
@@ -68,6 +73,29 @@ button,input,select,textarea {
   align-items:center;
   gap:10px;
   color:var(--navy)
+}
+.theme-toggle {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-height:38px;
+  padding:0 11px;
+  border:1px solid var(--line);
+  background:var(--surface);
+  color:var(--ink);
+  cursor:pointer;
+  font-size:11px;
+  font-weight:600;
+  white-space:nowrap
+}
+.theme-toggle:hover {
+  border-color:var(--gold)
+}
+.theme-toggle-icon {
+  color:var(--gold);
+  font-size:17px;
+  line-height:1
 }
 .brand-logo {
   display:block;
@@ -258,7 +286,7 @@ em {
   padding:106px 0
 }
 .intro {
-  background:var(--pale)
+  background:var(--surface-soft)
 }
 .intro-grid {
   display:grid;
@@ -316,7 +344,7 @@ em {
   letter-spacing:.6px
 }
 .services {
-  background:white
+  background:var(--surface)
 }
 .section-heading {
   display:flex;
@@ -351,7 +379,7 @@ em {
 .service-card:hover {
   position:relative;
   z-index:1;
-  background:#f7f8f7;
+  background:var(--card-hover);
   transform:translateY(-4px)
 }
 .card-top {
@@ -453,7 +481,7 @@ em {
   font-weight:400
 }
 .proof {
-  background:#f3f5f4
+  background:var(--surface-soft)
 }
 .proof-grid {
   display:grid;
@@ -491,7 +519,7 @@ em {
   font-size:13px
 }
 .training {
-  background:white
+  background:var(--surface)
 }
 .training-grid {
   display:grid;
@@ -512,7 +540,7 @@ em {
 }
 .course-tags span {
   padding:8px 11px;
-  background:#f2f4f3;
+  background:var(--surface-soft);
   color:#42545d;
   font-size:11px
 }
@@ -523,7 +551,17 @@ em {
 .training-image {
   position:absolute;
   inset:0 32px 28px 0;
-  background:linear-gradient(0deg,rgba(16,40,59,.24),transparent 55%),url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1000&q=80') center/cover
+  background:linear-gradient(0deg,rgba(16,40,59,.24),transparent 55%),url('../assets/images/jvm-treinamento-turma.jpeg') center/cover
+}
+.training-image-secondary {
+  position:absolute;
+  top:74px;
+  right:0;
+  width:42%;
+  height:34%;
+  border:8px solid #fff;
+  background:url('../assets/images/jvm-treinamento-aula.jpg') center/cover;
+  box-shadow:0 12px 32px rgba(16,40,59,.18)
 }
 .training-caption {
   position:absolute;
@@ -544,8 +582,8 @@ em {
 }
 .training-stamp {
   position:absolute;
-  top:24px;
-  right:0;
+  bottom:56px;
+  left:24px;
   display:grid;
   place-content:center;
   width:90px;
@@ -566,6 +604,23 @@ em {
   padding:60px 0;
   background:#bd8c43;
   color:white
+}
+.cta-actions {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:10px
+}
+.cta-whatsapp {
+  color:white;
+  font-size:12px;
+  font-weight:600;
+  text-decoration:underline;
+  text-decoration-color:rgba(255,255,255,.55);
+  text-underline-offset:4px
+}
+.cta-whatsapp:hover {
+  text-decoration-color:white
 }
 .cta-inner {
   display:flex;
@@ -593,7 +648,7 @@ em {
   background:#f3f5f4
 }
 .contact {
-  background:#f6f7f6
+  background:var(--surface-soft)
 }
 .contact-grid {
   display:grid;
@@ -636,7 +691,7 @@ em {
   display:grid;
   gap:16px;
   padding:30px;
-  background:white;
+  background:var(--surface);
   box-shadow:0 12px 35px rgba(23,50,64,.05)
 }
 .honeypot {
@@ -666,9 +721,9 @@ em {
   width:100%;
   min-height:44px;
   padding:10px 12px;
-  border:1px solid #d9e0e1;
+  border:1px solid var(--field-border);
   border-radius:0;
-  background:#fff;
+  background:var(--field);
   color:var(--ink);
   outline:none;
   font-size:13px
@@ -737,9 +792,87 @@ em {
 .form-note[data-state="success"] {
   color:#35744b
 }
+:root[data-theme="dark"] {
+  color-scheme:dark;
+  --ink:#e4edf1;
+  --muted:#a9bac3;
+  --line:#304651;
+  --surface:#10232f;
+  --surface-soft:#162a36;
+  --field:#0d1e28;
+  --field-border:#405560;
+  --card-hover:#1b303c
+}
+:root[data-theme="dark"] .site-header {
+  background:rgba(16,35,47,.97);
+  border-bottom-color:rgba(214,229,235,.1)
+}
+:root[data-theme="dark"] em,
+:root[data-theme="dark"] .eyebrow,
+:root[data-theme="dark"] .proof-items article>span {
+  color:#e2b25e
+}
+:root[data-theme="dark"] .menu-toggle span {
+  background:var(--ink)
+}
+:root[data-theme="dark"] .brand,
+:root[data-theme="dark"] .text-link {
+  color:var(--ink)
+}
+:root[data-theme="dark"] .skip-link {
+  background:var(--surface);
+  color:var(--ink)
+}
+:root[data-theme="dark"] .service-icon {
+  background:#27363a;
+  color:#e2b25e
+}
+:root[data-theme="dark"] .card-link,
+:root[data-theme="dark"] .contact-info .whatsapp-link,
+:root[data-theme="dark"] .contact-info span {
+  color:#e2b25e
+}
+:root[data-theme="dark"] .intro-text,
+:root[data-theme="dark"] .intro-aside p,
+:root[data-theme="dark"] .contact-form label {
+  color:#c2d0d6
+}
+:root[data-theme="dark"] .intro-aside {
+  border-left-color:var(--line)
+}
+:root[data-theme="dark"] .proof-items article {
+  border-bottom-color:var(--line)
+}
+:root[data-theme="dark"] .training-image-secondary {
+  border-color:var(--surface)
+}
+:root[data-theme="dark"] .contact-form input,
+:root[data-theme="dark"] .contact-form select,
+:root[data-theme="dark"] .contact-form textarea {
+  color-scheme:dark
+}
+:root[data-theme="dark"] .form-note[data-state="error"] {
+  color:#ff9d91
+}
+:root[data-theme="dark"] .form-note[data-state="success"] {
+  color:#91d5a5
+}
+:root[data-theme="dark"] .nav {
+  background:var(--surface)
+}
+:root[data-theme="dark"] .nav>a:not(.button) {
+  border-bottom-color:var(--line)
+}
 @media(max-width:900px) {
+  .theme-toggle {
+    width:38px;
+    padding:0
+  }
+  .theme-toggle-label {
+    display:none
+  }
   .nav {
-    gap:20px
+    gap:16px
   }
   .hero {
     min-height:620px
@@ -803,7 +936,7 @@ em {
     display:block;
     width:22px;
     height:2px;
-    background:var(--navy);
+    background:var(--ink);
     transition:transform .2s
   }
   .menu-toggle[aria-expanded="true"] span:first-child {
@@ -965,6 +1098,9 @@ em {
   }
   .cta-inner h2 {
     font-size:31px
+  }
+  .cta-actions {
+    gap:12px
   }
   .form-row {
     grid-template-columns:1fr
