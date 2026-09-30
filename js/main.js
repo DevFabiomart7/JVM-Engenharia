@@ -7,7 +7,8 @@ function updateThemeButton(theme) {
   const label = nextTheme === 'dark' ? 'Modo escuro' : 'Modo claro';
   themeButton.setAttribute('aria-label', `Ativar ${label.toLowerCase()}`);
   themeButton.querySelector('.theme-toggle-label').textContent = label;
-  themeButton.querySelector('.theme-toggle-icon').textContent = nextTheme === 'dark' ? '☾' : '☀';
+  themeButton.querySelector('.theme-icon-moon').hidden = nextTheme !== 'dark';
+  themeButton.querySelector('.theme-icon-sun').hidden = nextTheme !== 'light';
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#10232f' : '#ffffff');
 }
 
