@@ -1,5 +1,6 @@
 import { createServer } from 'node:http';
 import { createReadStream, existsSync, readFileSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { extname, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -21,6 +22,10 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
   .map((origin) => origin.trim())
   .filter(Boolean);
 const trustProxy = process.env.TRUST_PROXY === 'true';
+const redisUrl = process.env.UPSTASH_REDIS_REST_URL || '';
+const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN || '';
+const redisConfigured = Boolean(redisUrl && redisToken);
+const isProduction = process.env.NODE_ENV === 'production';
 
 const contentTypes = {
   '.css': 'text/css; charset=utf-8',
@@ -33,7 +38,7 @@ const contentTypes = {
 };
 
 const server = createServer(async (request, response) => {
-  setSecurityHeaders(response);
+  setSecurityHeaders(request, response);
 
   let requestUrl;
   try {
@@ -47,7 +52,11 @@ const server = createServer(async (request, response) => {
       response.setHeader('Allow', 'GET');
       return sendJson(response, 405, { message: 'Método não permitido.' });
     }
-    return sendJson(response, 200, { status: 'ok', emailConfigured: Boolean(resendApiKey && mailFrom) });
+    return sendJson(response, 200, {
+      status: 'ok',
+      emailConfigured: Boolean(resendApiKey && mailFrom),
+      rateLimitConfigured: redisConfigured,
+    });
   }
 
   if (requestUrl.pathname === '/api/contact') {
@@ -91,7 +100,14 @@ async function handleContact(request, response) {
   }
 
   const clientKey = getClientKey(request);
-  if (!consumeRateLimit(clientKey)) {
+  let allowed;
+  try {
+    allowed = await checkRateLimit(clientKey);
+  } catch {
+    console.error('Falha no limitador compartilhado de requisições.');
+    return sendJson(response, 503, { message: 'O serviço está temporariamente indisponível. Tente novamente mais tarde.' });
+  }
+  if (!allowed) {
     return sendJson(response, 429, { message: 'Muitas tentativas. Aguarde alguns minutos e tente novamente.' });
   }
 
@@ -237,10 +253,10 @@ function isAllowedOrigin(request) {
 }
 
 function applyCors(request, response) {
+  response.setHeader('Vary', 'Origin');
   const origin = request.headers.origin;
   if (origin && isAllowedOrigin(request)) {
     response.setHeader('Access-Control-Allow-Origin', origin);
-    response.setHeader('Vary', 'Origin');
     response.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   }
@@ -254,6 +270,30 @@ function getClientKey(request) {
     }
   }
   return request.socket.remoteAddress || 'unknown';
+}
+
+async function checkRateLimit(key) {
+  if (redisConfigured) return checkRedisRateLimit(key);
+  if (isProduction) throw new Error('A shared rate limiter is required in production.');
+  return consumeRateLimit(key);
+}
+
+async function checkRedisRateLimit(key) {
+  const redisKey = `jvm:contact:${createHash('sha256').update(key).digest('hex')}`;
+  const script = "local count = redis.call('INCR', KEYS[1]); if count == 1 then redis.call('EXPIRE', KEYS[1], ARGV[1]); end; return count";
+  const response = await fetch(redisUrl, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${redisToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(['EVAL', script, '1', redisKey, String(rateLimitWindowMs / 1000)]),
+    signal: AbortSignal.timeout(2_000),
+  });
+  if (!response.ok) throw new Error('Redis request failed.');
+  const result = await response.json();
+  if (result.error || !Number.isInteger(result.result)) throw new Error('Invalid Redis response.');
+  return result.result <= rateLimitMax;
 }
 
 function consumeRateLimit(key) {
@@ -322,11 +362,16 @@ function sendJson(response, statusCode, data) {
   return response.end(JSON.stringify(data));
 }
 
-function setSecurityHeaders(response) {
+function setSecurityHeaders(request, response) {
   response.setHeader('X-Content-Type-Options', 'nosniff');
   response.setHeader('X-Frame-Options', 'DENY');
   response.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   response.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  response.setHeader('Content-Security-Policy', "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; img-src 'self' data: https://images.unsplash.com; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https:; upgrade-insecure-requests");
+  const forwardedProtocol = trustProxy ? request.headers['x-forwarded-proto']?.split(',')[0].trim() : '';
+  if (request.socket.encrypted || forwardedProtocol === 'https') {
+    response.setHeader('Strict-Transport-Security', 'max-age=31536000');
+  }
 }
 
 function loadLocalEnv() {

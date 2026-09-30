@@ -1,18 +1,10 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <script>
-      try {
-        const savedTheme = localStorage.getItem('jvm-theme');
-        if (savedTheme === 'light' || savedTheme === 'dark') {
-          document.documentElement.dataset.theme = savedTheme;
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          document.documentElement.dataset.theme = 'dark';
-        }
-      } catch {}
-    </script>
+    <script src="js/theme.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data: https:; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https:; upgrade-insecure-requests">
     <meta name="theme-color" content="#10283b">
     <meta name="description" content="Engenharia elétrica, segurança do trabalho, inspeções, laudos e treinamentos profissionais no Distrito Federal e em Goiás.">
     <title>JVM Engenharia &amp; Treinamento | Início</title>
