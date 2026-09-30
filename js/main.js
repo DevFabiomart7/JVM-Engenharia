@@ -1,6 +1,38 @@
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#site-nav');
 const themeButton = document.querySelector('#theme-toggle');
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+if (!reduceMotion.matches) {
+  document.documentElement.classList.add('page-entering');
+}
+
+window.addEventListener('pageshow', () => {
+  document.documentElement.classList.remove('page-leaving');
+});
+
+document.querySelectorAll('a[href]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    if (
+      reduceMotion.matches ||
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey ||
+      link.target ||
+      link.hasAttribute('download')
+    ) return;
+
+    const destination = new URL(link.href, window.location.href);
+    if (destination.origin !== window.location.origin || destination.pathname === window.location.pathname) return;
+
+    event.preventDefault();
+    document.documentElement.classList.add('page-leaving');
+    window.setTimeout(() => window.location.assign(destination.href), 170);
+  });
+});
 
 function updateThemeButton(theme) {
   const nextTheme = theme === 'dark' ? 'light' : 'dark';
@@ -39,12 +71,15 @@ navigation.querySelectorAll('a').forEach((link) => {
   });
 });
 
-document.querySelector('#year').textContent = new Date().getFullYear();
+document.querySelectorAll('#year').forEach((year) => {
+  year.textContent = new Date().getFullYear();
+});
 
 const contactApiBaseUrl = (window.JVM_CONTACT_API_URL || '').replace(/\/$/, '');
 const isGitHubPages = window.location.hostname.endsWith('github.io');
 
-document.querySelector('#contact-form').addEventListener('submit', (event) => {
+const contactForm = document.querySelector('#contact-form');
+contactForm?.addEventListener('submit', (event) => {
   event.preventDefault();
   const form = event.currentTarget;
   const note = document.querySelector('#form-note');
