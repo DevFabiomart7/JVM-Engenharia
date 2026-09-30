@@ -1,6 +1,6 @@
 # JVM Engenharia & Treinamento
 
-Site institucional estático servido pelo backend Node.js. O mesmo processo também disponibiliza a API de contato.
+Site institucional estático com backend Node.js opcional para a API de contato. Em execução local ou em contêiner, o Node.js serve o site e a API. O GitHub Pages publica apenas o site estático.
 
 ## Requisitos
 
@@ -31,7 +31,7 @@ O `Dockerfile` prepara o site e a API para hospedagem em um serviço que aceite 
 
 ### GitHub Pages
 
-O workflow `.github/workflows/pages.yml` publica automaticamente o site estático ao enviar alterações para `main`. O endereço previsto para este repositório é `https://devfabiomart7.github.io/JVM-Engenharia/`. Em **Settings → Pages**, selecione **GitHub Actions** como origem de publicação. O Pages publica apenas HTML, CSS, JavaScript e imagens; ele não executa o backend Node.
+O workflow `.github/workflows/pages.yml` publica automaticamente o site estático quando há alterações em `main`. O repositório já está configurado para usar **GitHub Actions** como origem de publicação. O site fica em `https://devfabiomart7.github.io/JVM-Engenharia/`. O Pages publica HTML, CSS, JavaScript e imagens; ele não executa o backend Node.
 
 Por isso, o formulário avisa que ainda precisa de um backend quando aberto no domínio `github.io`. Quando a API Node estiver hospedada separadamente, preencha `window.JVM_CONTACT_API_URL` em `js/config.js` com sua origem HTTPS, sem `/api/contact`, e inclua `https://devfabiomart7.github.io` em `ALLOWED_ORIGINS` no backend.
 
@@ -39,10 +39,12 @@ Use HTTPS na hospedagem. Deixe `TRUST_PROXY=false`, a menos que a plataforma use
 
 O limite de cinco envios por dez minutos é mantido em memória e reinicia quando o processo reinicia. Para hospedagem com várias instâncias, substitua esse armazenamento por um limitador compartilhado (por exemplo, Redis) antes de escalar horizontalmente.
 
-## Configurações ainda necessárias
+## Pendências para ativar o formulário
 
-- Criar ou acessar a conta Resend da JVM e validar um domínio/remetente.
-- Inserir a chave secreta do Resend no ambiente local e no serviço de hospedagem.
-- Escolher a hospedagem e apontar o domínio do site para ela.
+- Criar ou acessar a conta Resend da JVM e verificar um domínio/remetente.
+- Hospedar o backend Node.js separadamente do GitHub Pages e configurar `MAIL_TO`, `MAIL_FROM`, `RESEND_API_KEY`, `ALLOWED_ORIGINS` e `PORT` como variáveis de ambiente.
+- Preencher `window.JVM_CONTACT_API_URL` em `js/config.js` com a origem HTTPS do backend.
 - Confirmar o endereço destinatário que receberá os contatos.
 - Revisar e publicar o aviso de privacidade da JVM antes de receber dados de clientes.
+
+O site estático já está publicado no GitHub Pages. Sem o backend e as credenciais do Resend, o formulário não consegue enviar mensagens. Um domínio próprio é opcional.
