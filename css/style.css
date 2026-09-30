@@ -94,8 +94,18 @@ button,input,select,textarea {
 }
 .theme-toggle-icon {
   color:var(--gold);
-  font-size:17px;
-  line-height:1
+  display:inline-flex;
+  align-items:center;
+  justify-content:center
+}
+.theme-toggle-icon svg {
+  display:block;
+  width:18px;
+  height:18px;
+  fill:currentColor
+}
+.theme-toggle-icon svg[hidden] {
+  display:none
 }
 .brand-logo {
   display:block;
@@ -308,7 +318,7 @@ em {
   background:var(--gold)
 }
 .kicker-number {
-  color:#9ba8ad;
+  color:var(--muted);
   font-size:10px;
   letter-spacing:1.4px
 }
@@ -318,7 +328,7 @@ em {
 .intro-text {
   max-width:650px;
   margin:25px 0 25px;
-  color:#52646c;
+  color:var(--muted);
   font-size:16px
 }
 .intro-aside {
@@ -330,16 +340,22 @@ em {
   color:var(--gold);
   font-size:22px
 }
+.aside-icon svg {
+  display:block;
+  width:24px;
+  height:24px;
+  fill:currentColor
+}
 .intro-aside p {
   margin:14px 0;
-  color:#334b58;
+  color:var(--ink);
   font-family:var(--display);
   font-size:14px;
   font-weight:600;
   line-height:1.6
 }
 .intro-aside span {
-  color:#839199;
+  color:var(--muted);
   font-size:10px;
   letter-spacing:.6px
 }
@@ -397,8 +413,14 @@ em {
   color:#a67932;
   font-size:22px
 }
+.service-icon svg {
+  display:block;
+  width:22px;
+  height:22px;
+  fill:currentColor
+}
 .card-num {
-  color:#a5b0b4;
+  color:var(--muted);
   font-size:10px;
   letter-spacing:1.3px
 }
@@ -541,7 +563,7 @@ em {
 .course-tags span {
   padding:8px 11px;
   background:var(--surface-soft);
-  color:#42545d;
+  color:var(--ink);
   font-size:11px
 }
 .training-visual {
@@ -713,7 +735,7 @@ em {
 .contact-form label {
   display:grid;
   gap:7px;
-  color:#52646c;
+  color:var(--muted);
   font-size:11px;
   font-weight:600
 }
@@ -735,12 +757,16 @@ em {
   border-color:#b58740;
   box-shadow:0 0 0 3px rgba(215,163,78,.17)
 }
+.contact-form input::placeholder,.contact-form textarea::placeholder {
+  color:var(--muted);
+  opacity:1
+}
 .contact-form .button {
   justify-self:start
 }
 .form-note {
   margin:-8px 0 0;
-  color:#88959a;
+  color:var(--muted);
   font-size:10px
 }
 .footer {
@@ -806,6 +832,21 @@ em {
 :root[data-theme="dark"] .site-header {
   background:rgba(16,35,47,.97);
   border-bottom-color:rgba(214,229,235,.1)
+}
+:root[data-theme="dark"] .nav>a:not(.button):hover,
+:root[data-theme="dark"] .text-link:hover,
+:root[data-theme="dark"] .contact-info a:hover {
+  color:#f0c36e
+}
+:root[data-theme="dark"] .contact-cta {
+  color:#10283b
+}
+:root[data-theme="dark"] .cta-inner .eyebrow,
+:root[data-theme="dark"] .cta-whatsapp {
+  color:#10283b
+}
+:root[data-theme="dark"] .cta-whatsapp {
+  text-decoration-color:rgba(16,40,59,.6)
 }
 :root[data-theme="dark"] em,
 :root[data-theme="dark"] .eyebrow,
@@ -982,17 +1023,19 @@ em {
   }
   .hero-content {
     padding-top:90px;
-    padding-bottom:140px
+    padding-bottom:140px;
+    text-align:center
   }
   .hero h1 {
     font-size:clamp(43px,12vw,62px);
     letter-spacing:-1.5px
   }
   .hero-lead {
+    margin-inline:auto;
     font-size:14px
   }
   .hero-actions {
-    align-items:flex-start;
+    align-items:center;
     flex-direction:column;
     gap:19px
   }
@@ -1015,6 +1058,7 @@ em {
   .section-kicker {
     flex-direction:row;
     align-items:center;
+    justify-content:center;
     gap:12px
   }
   .section-kicker .eyebrow {
@@ -1026,27 +1070,59 @@ em {
   .intro h2,.section-heading h2,.proof h2,.training h2,.contact h2 {
     font-size:37px
   }
+  .intro-main,
+  .section-heading,
+  .detail-heading,
+  .proof-title,
+  .training-copy,
+  .contact-intro {
+    text-align:center
+  }
+  .contact-intro>p:not(.eyebrow) {
+    margin-inline:auto
+  }
+  .intro-text {
+    margin-inline:auto
+  }
   .intro-text {
     font-size:14px
   }
   .intro-aside {
     grid-column:auto;
     max-width:none;
-    margin-top:8px
+    margin-top:8px;
+    padding:18px 0 0;
+    border-top:1px solid var(--line);
+    border-left:0;
+    text-align:center
   }
   .section-heading {
     display:block;
     margin-bottom:30px
   }
   .section-heading>p {
-    margin-top:18px
+    margin:18px auto 0
   }
   .service-grid {
     grid-template-columns:1fr
   }
   .service-card {
     min-height:240px;
-    padding:21px
+    padding:21px;
+    align-items:center;
+    text-align:center
+  }
+  .service-card h3,
+  .service-card p {
+    max-width:420px
+  }
+  .service-card .card-top,
+  .card-link {
+    width:100%
+  }
+  .card-link {
+    justify-content:center;
+    gap:8px
   }
   .card-top {
     margin-bottom:18px
@@ -1056,13 +1132,20 @@ em {
     gap:38px
   }
   .detail-heading>p:not(.eyebrow) {
+    margin-inline:auto;
     font-size:13px
+  }
+  .detail-heading .button {
+    margin-inline:auto
   }
   .detail-list p {
     font-size:12px
   }
   .proof-title {
     position:static
+  }
+  .proof-title .eyebrow {
+    margin-bottom:12px
   }
   .proof-items article {
     grid-template-columns:40px 1fr
@@ -1072,6 +1155,12 @@ em {
   }
   .training-grid {
     gap:30px
+  }
+  .course-tags {
+    justify-content:center
+  }
+  .training-copy .text-link {
+    justify-content:center
   }
   .training-visual {
     min-height:330px
@@ -1092,14 +1181,18 @@ em {
     padding:42px 0
   }
   .cta-inner {
-    align-items:flex-start;
+    align-items:center;
     gap:23px;
     flex-direction:column
+  }
+  .cta-inner>div {
+    text-align:center
   }
   .cta-inner h2 {
     font-size:31px
   }
   .cta-actions {
+    align-items:center;
     gap:12px
   }
   .form-row {
@@ -1107,6 +1200,12 @@ em {
   }
   .contact-form {
     padding:21px
+  }
+  .contact-form .button {
+    justify-self:center
+  }
+  .form-note {
+    text-align:center
   }
   .footer-main {
     grid-template-columns:1fr 1fr;
