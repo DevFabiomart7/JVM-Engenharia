@@ -264,6 +264,80 @@ html::after {
 .home-training-inner>.button {
   margin-inline:auto
 }
+.clients-preview {
+  background:var(--surface)
+}
+.client-grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line)
+}
+.client-card {
+  min-height:200px;
+  padding:25px 22px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  transition:background .2s,transform .2s
+}
+.client-card:hover {
+  position:relative;
+  z-index:1;
+  background:var(--card-hover);
+  transform:translateY(-4px)
+}
+.client-mark {
+  display:grid;
+  place-items:center;
+  width:36px;
+  height:36px;
+  margin-bottom:25px;
+  background:#f5f1e8;
+  color:#a67932;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1px
+}
+.client-card h3 {
+  margin:0 0 9px;
+  font-family:var(--display);
+  font-size:16px;
+  letter-spacing:-.3px
+}
+.client-card p {
+  margin:0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.7
+}
+.client-card--brand {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  min-height:148px;
+  text-align:center
+}
+.client-card--brand .client-mark {
+  width:auto;
+  height:auto;
+  margin:0 0 14px;
+  padding:0;
+  background:transparent;
+  color:#a67932
+}
+.client-card--brand h3 {
+  margin:0;
+  font-size:clamp(16px,2vw,22px);
+  font-weight:800
+}
+.client-card--brand p {
+  margin-top:3px;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase
+}
 .button {
   display:inline-flex;
   align-items:center;
@@ -1017,6 +1091,13 @@ em {
   background:#27363a;
   color:#e2b25e
 }
+:root[data-theme="dark"] .client-mark {
+  background:#27363a;
+  color:#e2b25e
+}
+:root[data-theme="dark"] .client-card--brand .client-mark {
+  background:transparent
+}
 :root[data-theme="dark"] .card-link,
 :root[data-theme="dark"] .contact-info .whatsapp-link,
 :root[data-theme="dark"] .contact-info span {
@@ -1085,6 +1166,9 @@ em {
     max-width:460px
   }
   .service-grid {
+    grid-template-columns:repeat(2,1fr)
+  }
+  .client-grid {
     grid-template-columns:repeat(2,1fr)
   }
   .detail-grid,.proof-grid,.contact-grid {
@@ -1270,6 +1354,17 @@ em {
   }
   .service-grid {
     grid-template-columns:1fr
+  }
+  .client-grid {
+    grid-template-columns:1fr
+  }
+  .client-card {
+    min-height:0;
+    padding:22px;
+    text-align:center
+  }
+  .client-mark {
+    margin:0 auto 16px
   }
   .service-card {
     min-height:240px;

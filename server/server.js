@@ -332,7 +332,7 @@ function serveStatic(request, response, pathname) {
     return sendJson(response, 400, { message: 'Caminho inválido.' });
   }
 
-  const allowedPages = new Set(['/index.html', '/sobre.html', '/servicos.html', '/cursos.html', '/contato.html']);
+  const allowedPages = new Set(['/index.html', '/sobre.html', '/servicos.html', '/cursos.html', '/clientes.html', '/contato.html']);
   const allowedPath = decodedPath === '/' || allowedPages.has(decodedPath) || /^\/(css|js|assets)\/[a-zA-Z0-9._/-]+$/.test(decodedPath);
   if (!allowedPath || decodedPath.split('/').includes('..')) {
     return sendJson(response, 404, { message: 'Página não encontrada.' });
