@@ -36,7 +36,7 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p _site/preview
-          cp sources/main/index.html sources/main/sobre.html sources/main/servicos.html sources/main/cursos.html sources/main/contato.html _site/
+          cp sources/main/index.html sources/main/sobre.html sources/main/servicos.html sources/main/cursos.html sources/main/clientes.html sources/main/contato.html _site/
           cp -R sources/main/css sources/main/js sources/main/assets _site/
           cp sources/previous/index.html _site/preview/
           cp -R sources/previous/css sources/previous/js sources/previous/assets _site/preview/
