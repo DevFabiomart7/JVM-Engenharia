@@ -1,26 +1,299 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <script src="js/theme.js"></script>
-    <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data: https:; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https:; upgrade-insecure-requests"><meta name="theme-color" content="#10283b"><meta name="description" content="Serviços de engenharia elétrica, segurança do trabalho, inspeções e consultoria técnica da JVM.">
+    <script src="js/theme.js">
+    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; form-action 'self'; img-src 'self' data: https:; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; connect-src 'self' https:; upgrade-insecure-requests">
+    <meta name="theme-color" content="#10283b">
+    <meta name="description" content="Serviços de engenharia elétrica, segurança do trabalho, inspeções e consultoria técnica da JVM.">
     <title>Serviços | JVM Engenharia &amp; Treinamento</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="css/style.css"><script src="js/config.js" defer></script><script src="js/main.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/config.js" defer>
+    </script>
+    <script src="js/main.js" defer>
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
-    <header class="site-header"><div class="container header-inner"><a class="brand" href="index.html" aria-label="JVM Engenharia — início"><img class="brand-logo" src="assets/images/jvm-logo.png" alt="JVM Engenharia &amp; Treinamento"></a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ativar modo escuro"><span class="theme-toggle-icon" aria-hidden="true"><svg class="theme-icon-moon" viewBox="0 0 24 24"><path d="M9.37 5.51A7 7 0 0 0 18.5 14.5c.69 0 1.36-.1 2-.3A9 9 0 1 1 9.37 5.51Z"/></svg><svg class="theme-icon-sun" viewBox="0 0 24 24" hidden><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l-1.42 1.42m11.3-11.3 1.42-1.42" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/></svg></span><span class="theme-toggle-label">Modo escuro</span></button><button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu"><span></span><span></span></button><nav class="nav" id="site-nav" aria-label="Navegação principal"><a href="sobre.html">Sobre nós</a><a href="servicos.html" aria-current="page">Serviços</a><a href="cursos.html">Cursos</a><a href="clientes.html">Clientes</a><a href="contato.html">Contato</a><a href="https://www.instagram.com/jvm_engenhariaetreinamento/?stkn=MXVxZW4xYjBiNGRyMw%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></a><a class="button button-small" href="contato.html">Solicite um orçamento <span aria-hidden="true"><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></span></a></nav></div></header>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="index.html" aria-label="JVM Engenharia — início">
+          <img class="brand-logo" src="assets/images/jvm-logo.png" alt="JVM Engenharia &amp; Treinamento">
+        </a>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ativar modo escuro">
+          <span class="theme-toggle-icon" aria-hidden="true">
+            <svg class="theme-icon-moon" viewBox="0 0 24 24">
+              <path d="M9.37 5.51A7 7 0 0 0 18.5 14.5c.69 0 1.36-.1 2-.3A9 9 0 1 1 9.37 5.51Z"/>
+            </svg>
+            <svg class="theme-icon-sun" viewBox="0 0 24 24" hidden>
+              <circle cx="12" cy="12" r="4"/>
+              <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l-1.42 1.42m11.3-11.3 1.42-1.42" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"/>
+            </svg>
+          </span>
+          <span class="theme-toggle-label">Modo escuro</span>
+        </button>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menu">
+          <span>
+          </span>
+          <span>
+          </span>
+        </button>
+        <nav class="nav" id="site-nav" aria-label="Navegação principal">
+          <a href="sobre.html">Sobre nós</a>
+          <a href="servicos.html" aria-current="page">Serviços</a>
+          <a href="cursos.html">Cursos</a>
+          <a href="clientes.html">Clientes</a>
+          <a href="contato.html">Contato</a>
+          <a href="https://www.instagram.com/jvm_engenhariaetreinamento/?stkn=MXVxZW4xYjBiNGRyMw%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram
+            <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+            </svg>
+          </a>
+          <a class="button button-small" href="contato.html">Solicite um orçamento
+            <span aria-hidden="true">
+              <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+              </svg>
+            </span>
+          </a>
+        </nav>
+      </div>
+    </header>
     <main id="conteudo">
-      <section class="page-banner"><div class="container"><p class="eyebrow">O QUE FAZEMOS</p><h1>Soluções para sua<br><em>operação funcionar melhor.</em></h1><p>Serviços especializados para apoiar a segurança, a conformidade e a eficiência da sua empresa.</p></div></section>
-      <section class="services section-pad"><div class="container"><div class="service-grid">
-        <article class="service-card"><div class="card-top"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 11-13h-7z"/></svg></span><span class="card-num">01</span></div><h3>Engenharia elétrica</h3><p>Instalações, manutenção e soluções elétricas prediais e industriais, com foco em segurança e desempenho.</p></article>
-        <article class="service-card"><div class="card-top"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3 20 6v5c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"/><path d="m8.5 11.5 2.2 2.2 4.8-4.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></span><span class="card-num">02</span></div><h3>Segurança do trabalho</h3><p>Inspeções e apoio técnico para contribuir com ambientes de trabalho mais seguros e em conformidade.</p></article>
-        <article class="service-card"><div class="card-top"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 5 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"/></svg></span><span class="card-num">03</span></div><h3>Inspeções e ensaios</h3><p>Avaliações técnicas de instalações, equipamentos e sistemas para identificar condições e orientar ações.</p></article>
-        <article class="service-card"><div class="card-top"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 1.7 7.1L21 7l-4.4 5 4.4 5-7.3-2.1L12 22l-1.7-7.1L3 17l4.4-5L3 7l7.3 2.1z"/></svg></span><span class="card-num">04</span></div><h3>Consultoria técnica</h3><p>Assessoria especializada para apoiar decisões e necessidades técnicas da sua operação.</p></article>
-      </div></div></section>
-      <section class="service-detail section-pad"><div class="container detail-grid"><div class="detail-heading"><p class="eyebrow eyebrow-light">SERVIÇOS ESPECIALIZADOS</p><h2>Conhecimento técnico<br>em campo.</h2><p>Serviços apresentados conforme as informações publicadas pela empresa. Consulte a equipe para avaliar as necessidades da sua operação.</p><a class="button button-outline" href="contato.html">Solicitar atendimento <span><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></span></a></div><div class="detail-list"><div><span>01</span><p>Manutenção de subestações</p><b><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></b></div><div><span>02</span><p>Instalação e manutenção elétrica predial e industrial</p><b><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></b></div><div><span>03</span><p>Automação de sistemas supervisórios</p><b><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></b></div><div><span>04</span><p>Instalação e manutenção de SPDA</p><b><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></b></div><div><span>05</span><p>Termografia e inspeção elétrica NR10</p><b><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></b></div><div><span>06</span><p>Inspeção de máquinas NR12 e sistemas de incêndio</p><b><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></b></div><div><span>07</span><p>Sondagem geoelétrica do solo e qualidade de energia</p><b><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></b></div><div><span>08</span><p>Modalidade tarifária e correção de fator de potência</p><b><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></b></div><div><span>09</span><p>Montagem de quadros de distribuição e comando</p><b><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></b></div></div></div></section>
-      <section class="contact-cta"><div class="container cta-inner"><div><p class="eyebrow eyebrow-light">FALE COM A JVM</p><h2>Precisa de um serviço técnico?</h2></div><div class="cta-actions"><a class="button button-light" href="contato.html">Solicitar orçamento <span aria-hidden="true"><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></span></a><a class="cta-whatsapp" href="https://wa.me/5561985300679" target="_blank" rel="noopener noreferrer">Fale pelo WhatsApp <span aria-hidden="true"><svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></span></a></div></div></section>
+      <section class="page-banner">
+        <div class="container">
+          <p class="eyebrow">O QUE FAZEMOS</p>
+          <h1>Soluções para sua
+            <br>
+            <em>operação funcionar melhor.</em>
+          </h1>
+          <p>Serviços especializados para apoiar a segurança, a conformidade e a eficiência da sua empresa.</p>
+        </div>
+      </section>
+      <section class="services section-pad">
+        <div class="container">
+          <div class="service-grid">
+            <article class="service-card">
+              <div class="card-top">
+                <span class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M13 2 4 14h6l-1 8 11-13h-7z"/>
+                  </svg>
+                </span>
+                <span class="card-num">01</span>
+              </div>
+              <h3>Engenharia elétrica</h3>
+              <p>Instalações, manutenção e soluções elétricas prediais e industriais, com foco em segurança e desempenho.</p>
+            </article>
+            <article class="service-card">
+              <div class="card-top">
+                <span class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 3 20 6v5c0 5-3.4 8.4-8 10-4.6-1.6-8-5-8-10V6z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="1.8"/>
+                    <path d="m8.5 11.5 2.2 2.2 4.8-4.8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+                  </svg>
+                </span>
+                <span class="card-num">02</span>
+              </div>
+              <h3>Segurança do trabalho</h3>
+              <p>Inspeções e apoio técnico para contribuir com ambientes de trabalho mais seguros e em conformidade.</p>
+            </article>
+            <article class="service-card">
+              <div class="card-top">
+                <span class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="10.8" cy="10.8" r="6.8" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="m16 16 5 5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.8"/>
+                  </svg>
+                </span>
+                <span class="card-num">03</span>
+              </div>
+              <h3>Inspeções e ensaios</h3>
+              <p>Avaliações técnicas de instalações, equipamentos e sistemas para identificar condições e orientar ações.</p>
+            </article>
+            <article class="service-card">
+              <div class="card-top">
+                <span class="service-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="m12 2 1.7 7.1L21 7l-4.4 5 4.4 5-7.3-2.1L12 22l-1.7-7.1L3 17l4.4-5L3 7l7.3 2.1z"/>
+                  </svg>
+                </span>
+                <span class="card-num">04</span>
+              </div>
+              <h3>Consultoria técnica</h3>
+              <p>Assessoria especializada para apoiar decisões e necessidades técnicas da sua operação.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="service-detail section-pad">
+        <div class="container detail-grid">
+          <div class="detail-heading">
+            <p class="eyebrow eyebrow-light">SERVIÇOS ESPECIALIZADOS</p>
+            <h2>Conhecimento técnico
+              <br>em campo.</h2>
+            <p>Serviços apresentados conforme as informações publicadas pela empresa. Consulte a equipe para avaliar as necessidades da sua operação.</p>
+            <a class="button button-outline" href="contato.html">Solicitar atendimento
+              <span>
+                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+          <div class="detail-list">
+            <div>
+              <span>01</span>
+              <p>Manutenção de subestações</p>
+              <b>
+                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+                </svg>
+              </b>
+            </div>
+            <div>
+              <span>02</span>
+              <p>Instalação e manutenção elétrica predial e industrial</p>
+              <b>
+                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+                </svg>
+              </b>
+            </div>
+            <div>
+              <span>03</span>
+              <p>Automação de sistemas supervisórios</p>
+              <b>
+                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+                </svg>
+              </b>
+            </div>
+            <div>
+              <span>04</span>
+              <p>Instalação e manutenção de SPDA</p>
+              <b>
+                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+                </svg>
+              </b>
+            </div>
+            <div>
+              <span>05</span>
+              <p>Termografia e inspeção elétrica NR10</p>
+              <b>
+                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+                </svg>
+              </b>
+            </div>
+            <div>
+              <span>06</span>
+              <p>Inspeção de máquinas NR12 e sistemas de incêndio</p>
+              <b>
+                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+                </svg>
+              </b>
+            </div>
+            <div>
+              <span>07</span>
+              <p>Sondagem geoelétrica do solo e qualidade de energia</p>
+              <b>
+                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+                </svg>
+              </b>
+            </div>
+            <div>
+              <span>08</span>
+              <p>Modalidade tarifária e correção de fator de potência</p>
+              <b>
+                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+                </svg>
+              </b>
+            </div>
+            <div>
+              <span>09</span>
+              <p>Montagem de quadros de distribuição e comando</p>
+              <b>
+                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+                </svg>
+              </b>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="contact-cta">
+        <div class="container cta-inner">
+          <div>
+            <p class="eyebrow eyebrow-light">FALE COM A JVM</p>
+            <h2>Precisa de um serviço técnico?</h2>
+          </div>
+          <div class="cta-actions">
+            <a class="button button-light" href="contato.html">Solicitar orçamento
+              <span aria-hidden="true">
+                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+                </svg>
+              </span>
+            </a>
+            <a class="cta-whatsapp" href="https://wa.me/5561985300679" target="_blank" rel="noopener noreferrer">Fale pelo WhatsApp
+              <span aria-hidden="true">
+                <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer class="footer"><div class="container footer-main"><a class="brand brand-footer" href="index.html"><span class="brand-mark">JVM</span><span class="brand-copy">ENGENHARIA <i>&amp;</i><br>TREINAMENTO</span></a><p>Soluções técnicas em engenharia, segurança do trabalho e capacitação profissional.</p><div class="footer-links"><a href="sobre.html">Sobre nós</a><a href="servicos.html">Serviços</a><a href="cursos.html">Cursos</a><a href="clientes.html">Clientes</a><a href="contato.html">Contato</a><a href="https://www.instagram.com/jvm_engenhariaetreinamento/?stkn=MXVxZW4xYjBiNGRyMw%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></a></div><div class="footer-contact"><a href="https://wa.me/5561985300679" target="_blank" rel="noopener noreferrer">WhatsApp · +55 (61) 98530-0679 <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/></svg></a><a href="mailto:joao.nunes@jvmengenharia.com.br">joao.nunes@jvmengenharia.com.br</a><span>Distrito Federal e Goiás</span></div></div><div class="container footer-bottom"><span>© <span id="year"></span> JVM Engenharia &amp; Treinamento. Todos os direitos reservados.</span><span>Conteúdo institucional baseado em informações públicas da JVM.</span></div></footer>
+    <footer class="footer">
+      <div class="container footer-main">
+        <a class="brand brand-footer" href="index.html">
+          <span class="brand-mark">JVM</span>
+          <span class="brand-copy">ENGENHARIA
+            <i>&amp;</i>
+            <br>TREINAMENTO</span>
+        </a>
+        <p>Soluções técnicas em engenharia, segurança do trabalho e capacitação profissional.</p>
+        <div class="footer-links">
+          <a href="sobre.html">Sobre nós</a>
+          <a href="servicos.html">Serviços</a>
+          <a href="cursos.html">Cursos</a>
+          <a href="clientes.html">Clientes</a>
+          <a href="contato.html">Contato</a>
+          <a href="https://www.instagram.com/jvm_engenhariaetreinamento/?stkn=MXVxZW4xYjBiNGRyMw%3D%3D&amp;utm_source=qr" target="_blank" rel="noopener noreferrer">Instagram
+            <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+            </svg>
+          </a>
+        </div>
+        <div class="footer-contact">
+          <a href="https://wa.me/5561985300679" target="_blank" rel="noopener noreferrer">WhatsApp · +55 (61) 98530-0679
+            <svg class="link-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 17 17 7M8 7h9v9" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+            </svg>
+          </a>
+          <a href="mailto:joao.nunes@jvmengenharia.com.br">joao.nunes@jvmengenharia.com.br</a>
+          <span>Distrito Federal e Goiás</span>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>©
+          <span id="year">
+          </span>
+          JVM Engenharia &amp; Treinamento. Todos os direitos reservados.</span>
+        <span>Conteúdo institucional baseado em informações públicas da JVM.</span>
+      </div>
+    </footer>
   </body>
 </html>
