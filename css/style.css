@@ -269,22 +269,27 @@ html::after {
 }
 .client-grid {
   display:grid;
-  grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--line);
-  border-left:1px solid var(--line)
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  grid-auto-rows:1fr;
+  gap:18px
 }
 .client-card {
-  min-height:200px;
-  padding:25px 22px;
-  border-right:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-  transition:background .2s,transform .2s
+  min-width:0;
+  min-height:0;
+  padding:0;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--surface);
+  box-shadow:0 5px 18px rgba(16,40,59,.045);
+  transition:background .2s,transform .2s,border-color .2s,box-shadow .2s
 }
 .client-card:hover {
   position:relative;
   z-index:1;
   background:var(--card-hover);
-  transform:translateY(-4px)
+  border-color:rgba(215,163,78,.65);
+  box-shadow:0 12px 28px rgba(16,40,59,.1);
+  transform:translateY(-3px)
 }
 .client-mark {
   display:grid;
@@ -315,53 +320,57 @@ html::after {
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  min-height:148px;
+  min-height:238px;
+  padding:22px 18px;
   text-align:center
 }
 .client-card--brand .client-mark {
-  width:72px;
-  height:72px;
-  margin:0 0 14px;
-  padding:0;
+  display:grid;
+  place-items:center;
+  flex:0 0 116px;
+  width:100%;
+  max-width:220px;
+  height:116px;
+  margin:0 0 12px;
+  padding:12px 16px;
   border:1px solid var(--line);
-  background:var(--surface) var(--client-logo) center/52px no-repeat;
-  color:transparent
+  border-radius:10px;
+  background:var(--surface);
+  box-shadow:0 2px 8px rgba(16,40,59,.035);
+  color:transparent;
+  transition:border-color .2s ease,box-shadow .2s ease
+}
+.client-card--brand .client-mark img {
+  display:block;
+  max-width:100%;
+  max-height:88px;
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  image-rendering:auto
+}
+.client-card--brand:hover .client-mark {
+  border-color:rgba(215,163,78,.65);
+  box-shadow:0 4px 12px rgba(16,40,59,.08)
 }
 .client-card--brand h3 {
+  display:grid;
+  place-items:center;
+  min-height:2.5em;
+  max-width:100%;
   margin:0;
-  font-size:clamp(16px,2vw,22px);
+  font-size:clamp(15px,1.5vw,18px);
+  line-height:1.25;
   font-weight:800
 }
 .client-card--brand p {
-  margin-top:3px;
+  min-height:1.5em;
+  margin-top:4px;
   font-size:10px;
   font-weight:700;
   letter-spacing:1px;
   text-transform:uppercase
 }
-.client-card--brand:nth-child(1) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=wehrmann.com.br&sz=128') }
-.client-card--brand:nth-child(2) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=doismarcos.com.br&sz=128') }
-.client-card--brand:nth-child(3) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=levvo.com.br&sz=128') }
-.client-card--brand:nth-child(4) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=igarashi.com.br&sz=128') }
-.client-card--brand:nth-child(5) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=schindler.com&sz=128') }
-.client-card--brand:nth-child(6) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=cfm.org.br&sz=128') }
-.client-card--brand:nth-child(7) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=escamax.com.br&sz=128') }
-.client-card--brand:nth-child(8) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=bimbo.com.br&sz=128') }
-.client-card--brand:nth-child(9) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=senai.br&sz=128') }
-.client-card--brand:nth-child(10) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=copaenergia.com.br&sz=128') }
-.client-card--brand:nth-child(11) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=jbs.com.br&sz=128') }
-.client-card--brand:nth-child(12) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=inframerica.aero&sz=128') }
-.client-card--brand:nth-child(13) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=bunge.com.br&sz=128') }
-.client-card--brand:nth-child(14) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=ems.com.br&sz=128') }
-.client-card--brand:nth-child(15) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=mistercryl.com.br&sz=128') }
-.client-card--brand:nth-child(16) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=fazendaalvorada.com.br&sz=128') }
-.client-card--brand:nth-child(17) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=seara.com.br&sz=128') }
-.client-card--brand:nth-child(18) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=nacionalgas.com.br&sz=128') }
-.client-card--brand:nth-child(19) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=uniaoquimica.com.br&sz=128') }
-.client-card--brand:nth-child(20) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=sesi.org.br&sz=128') }
-.client-card--brand:nth-child(21) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=one.com&sz=128') }
-.client-card--brand:nth-child(22) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=exteriores.gob.es&sz=128') }
-.client-card--brand:nth-child(23) .client-mark { --client-logo:url('https://www.google.com/s2/favicons?domain=aecid.es&sz=128') }
 .button {
   display:inline-flex;
   align-items:center;
@@ -1120,7 +1129,9 @@ em {
   color:#e2b25e
 }
 :root[data-theme="dark"] .client-card--brand .client-mark {
-  background-color:var(--surface)
+  background-color:var(--surface);
+  border-color:rgba(255,255,255,.16);
+  box-shadow:0 6px 20px rgba(0,0,0,.2)
 }
 :root[data-theme="dark"] .card-link,
 :root[data-theme="dark"] .contact-info .whatsapp-link,
